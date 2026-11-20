@@ -14,6 +14,7 @@ const { createSegmenter } = require('./services/clauseSegmenter');
 const { createSimilarityService } = require('./services/similarityService');
 const { createExplanationService } = require('./services/explanationService');
 const { extractText } = require('./services/textExtractor');
+const { createWorkerLifecycle, requireWorkerReady } = require('./services/workerLifecycle');
 async function main() {
   const config = loadConfig();
   const logger = pino({
@@ -22,26 +23,20 @@ async function main() {
   });
   const db = createDatabase(config.DATABASE_URL);
   db.pool.on('error', (err) => logger.error({ err }, 'Idle database connection failed'));
-  let workerLease;
   try {
     await migrate(db);
-    workerLease = await db.pool.connect();
-    const locked = (await workerLease.query('SELECT pg_try_advisory_lock(81742392) AS acquired'))
-      .rows[0].acquired;
-    if (!locked)
-      throw new Error(
-        'Another API worker is running. The in-process queue requires a single replica.',
-      );
-    workerLease.on('error', (err) => {
-      logger.fatal({ err }, 'Worker lease lost');
-      process.exit(1);
-    });
-    await recoverAnalyses(db);
     const gemini = createGemini(config);
     const queue = createJobQueue({
       concurrency: config.QUEUE_CONCURRENCY,
       capacity: config.QUEUE_CAPACITY,
       logger,
+    });
+    const worker = createWorkerLifecycle({
+      db,
+      queue,
+      logger,
+      recover: recoverAnalyses,
+      onLeaseLost: () => process.exit(1),
     });
     const pipeline = createAnalysisPipeline({
       db,
@@ -58,28 +53,33 @@ async function main() {
       queue,
       pipeline,
     });
-    const server = createApp({ config, logger, auth: createAuth(config), router }).listen(
-      config.PORT,
-      () => logger.info({ port: config.PORT }, 'API listening'),
-    );
-    async function shutdown() {
-      queue.stop();
-      server.close();
-      await queue.drain();
-      workerLease.release();
-      await db.close();
-      process.exit(0);
-    }
+    const app = createApp({
+      config,
+      logger,
+      auth: [...createAuth(config), requireWorkerReady(worker)],
+      router,
+    });
+    const server = await new Promise((resolve, reject) => {
+      const http = app.listen(config.PORT, () => resolve(http));
+      http.once('error', reject);
+    });
+    logger.info({ port: config.PORT }, 'API listening');
+    void worker.start();
+    let shuttingDown = false;
     for (const signal of ['SIGTERM', 'SIGINT'])
       process.once(signal, () => {
+        if (shuttingDown) return;
+        shuttingDown = true;
         setTimeout(() => process.exit(1), 55000).unref();
-        shutdown().catch((err) => {
-          logger.error({ err }, 'Shutdown failed');
-          process.exit(1);
-        });
+        worker.shutdown(server).then(
+          () => process.exit(0),
+          (err) => {
+            logger.error({ err }, 'Shutdown failed');
+            process.exit(1);
+          },
+        );
       });
   } catch (error) {
-    if (workerLease) workerLease.release();
     await db.close();
     throw error;
   }

@@ -17,6 +17,7 @@ export function Upload({ onUpload, waking = false }: Props) {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
+  const [accepted, setAccepted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [dragging, setDragging] = useState(false);
   useEffect(() => () => controller.current?.abort(), []);
@@ -35,11 +36,15 @@ export function Upload({ onUpload, waking = false }: Props) {
     controller.current = abort;
     try {
       await onUpload(file, setProgress, abort.signal);
+      if (!abort.signal.aborted) {
+        setProgress(100);
+        setAccepted(true);
+      }
     } catch (e) {
-      if (!abort.signal.aborted)
+      if (!abort.signal.aborted) {
         setError(e instanceof Error ? e.message : 'Upload failed. Please try again.');
-    } finally {
-      if (!abort.signal.aborted) setBusy(false);
+        setBusy(false);
+      }
     }
   }
   return (
@@ -117,7 +122,13 @@ export function Upload({ onUpload, waking = false }: Props) {
       {busy && (
         <div className="upload-progress" role="status">
           <div>
-            <span>{progress < 100 ? 'Uploading contract' : 'Preparing your analysis'}</span>
+            <span>
+              {accepted
+                ? 'Opening your report'
+                : progress < 100
+                  ? 'Uploading contract'
+                  : 'Preparing your analysis'}
+            </span>
             <span>{progress}%</span>
           </div>
           <progress max="100" value={progress} aria-label="Upload progress" />
@@ -128,7 +139,7 @@ export function Upload({ onUpload, waking = false }: Props) {
           {error}
         </p>
       )}
-      {waking && <WakeMessage />}
+      {waking && <WakeMessage retrying={false} />}
       <div className="upload-bottom">
         <p>
           <LockKeyhole size={14} />
@@ -138,7 +149,7 @@ export function Upload({ onUpload, waking = false }: Props) {
           {busy ? (
             <>
               <LoaderCircle size={16} className="spin" />
-              Uploading…
+              {accepted ? 'Opening report…' : 'Uploading…'}
             </>
           ) : (
             'Analyze contract'
@@ -148,11 +159,12 @@ export function Upload({ onUpload, waking = false }: Props) {
     </section>
   );
 }
-export function WakeMessage() {
+export function WakeMessage({ retrying = true }: { retrying?: boolean }) {
   return (
     <p role="status" className="notice">
       <LoaderCircle size={16} className="spin" />
-      Waking up the server, this can take up to a minute. We’ll retry automatically.
+      Waking up the server, this can take up to a minute.{' '}
+      {retrying ? 'We’ll retry automatically.' : 'Please keep this page open.'}
     </p>
   );
 }

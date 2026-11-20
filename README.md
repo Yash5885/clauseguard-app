@@ -77,6 +77,8 @@ Try `samples/nda.pdf`, `samples/freelance-agreement.pdf`, and `samples/one-sided
 
 Analysis embeddings use the same model and dimensionality with `RETRIEVAL_QUERY`. Do not change the embedding model without re-embedding the entire reference library. The API rejects analyses when the baseline library has not been seeded.
 
+After configuring credentials and seeding the database, run `npm --prefix server run verify:live`. This sends the included one-sided sample to the real Gemini services, checks source-preserving segmentation, query embeddings, pgvector retrieval, and flagged-clause explanation generation without creating an analysis record. It intentionally fails if segmentation falls back, so a failed upstream connection cannot look like a successful live check. To use another PDF or DOCX, pass its path after `--`. The default sample path is intended for running from the repository; inside a container, supply a mounted sample path. Browser sign-in and an authenticated sample upload still need separate verification.
+
 ## Environment variables
 
 ### Server: `server/.env`
@@ -191,7 +193,7 @@ Push the repository to your Git host and create a Render Blueprint from `render.
 
 Fill every `sync: false` setting: `DATABASE_URL`, `GEMINI_API_KEY`, `CLERK_SECRET_KEY`, `CLERK_PUBLISHABLE_KEY`, and `CLIENT_URL`. Set `CLIENT_URL` to your final Vercel origin, without a trailing slash. Copy the resulting Render service origin for the frontend. The image runs as a non-root user, includes production dependencies only, applies migrations at startup, and exposes `/health` for health checks.
 
-Run **one replica**. A database lease prevents a second API worker from starting and marking another worker's jobs failed. Before horizontal scaling or a zero-downtime multi-worker rollout, replace the in-process queue with a durable distributed queue and per-worker recovery. If an overlapping rollout cannot acquire the lease, let the old instance stop and redeploy the new instance.
+Run **one replica**. During an overlapping deployment, the replacement starts its HTTP server in standby and waits for the database worker lease. History and liveness remain available; uploads receive a clear 503 until the old worker finishes or exits and the replacement acquires the lease. Abandoned-job recovery runs only under that lease, so a replacement cannot fail the live worker's jobs. Shutdown waits for HTTP requests and queued work before releasing the lease and closing the database. The Render blueprint and Compose allow 60 seconds for shutdown; the process has a 55-second hard limit. Before horizontal scaling, replace the in-process queue with a durable distributed queue and per-worker recovery.
 
 ### 4. Deploy the frontend to Vercel
 

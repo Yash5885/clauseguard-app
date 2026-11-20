@@ -19,6 +19,10 @@ test('accepts a valid selection and submits with progress and cancellation signa
   await waitFor(() =>
     expect(onUpload).toHaveBeenCalledWith(file, expect.any(Function), expect.any(AbortSignal)),
   );
+  const accepted = await screen.findByRole('button', { name: 'Opening report…' });
+  expect(accepted).toBeDisabled();
+  fireEvent.click(accepted);
+  expect(onUpload).toHaveBeenCalledTimes(1);
 });
 test('announces validation and API errors', async () => {
   render(
@@ -30,6 +34,12 @@ test('announces validation and API errors', async () => {
   fireEvent.change(input, { target: { files: [new File(['%PDF'], 'good.pdf')] } });
   fireEvent.click(screen.getByRole('button', { name: 'Analyze contract' }));
   expect(await screen.findByRole('alert')).toHaveTextContent('Daily analysis limit reached.');
+  expect(screen.getByRole('button', { name: 'Analyze contract' })).toBeEnabled();
+});
+test('does not promise to replay an upload when the server is waking', () => {
+  render(<Upload onUpload={jest.fn()} waking />);
+  expect(screen.getByRole('status')).toHaveTextContent('Please keep this page open.');
+  expect(screen.getByRole('status')).not.toHaveTextContent('retry automatically');
 });
 test('supports drag and drop and clearing a file', () => {
   render(<Upload onUpload={jest.fn()} />);

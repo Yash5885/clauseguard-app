@@ -12,12 +12,12 @@
     "test": "jest --runInBand",
     "lint": "eslint .",
     "migrate": "node scripts/migrate.js",
-    "seed": "node scripts/seed.js"
+    "seed": "node scripts/seed.js",
+    "verify:live": "node scripts/verify-live.js"
   },
   "dependencies": {
     "@clerk/express": "^1.7.0",
     "@google/genai": "^1.30.0",
-    "clauseguard": "file:..",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "^4.21.2",

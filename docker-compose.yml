@@ -13,6 +13,7 @@ services:
       timeout: 5s
       retries: 20
   server:
+    stop_grace_period: 60s
     build: { context: ./server, target: development }
     env_file: ./server/.env
     environment:

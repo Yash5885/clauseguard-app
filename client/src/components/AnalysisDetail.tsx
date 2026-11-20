@@ -17,7 +17,7 @@ import { RiskBadge } from './RiskBadge';
 import { WakeMessage } from './Upload';
 import { Skeleton } from './Skeleton';
 export function AnalysisDetail({ id }: { id: string }) {
-  const { analysis, error, waking, retry } = useAnalysis(id);
+  const { analysis, error, notice, waking, retry } = useAnalysis(id);
   const [risk, setRisk] = useState('all');
   const [category, setCategory] = useState('all');
   if (error)
@@ -38,6 +38,11 @@ export function AnalysisDetail({ id }: { id: string }) {
     return (
       <>
         {waking && <WakeMessage />}
+        {notice && (
+          <p role="status" className="notice">
+            {notice}
+          </p>
+        )}
         <Skeleton />
       </>
     );
@@ -69,6 +74,11 @@ export function AnalysisDetail({ id }: { id: string }) {
         {analysis.overall_risk && <RiskBadge risk={analysis.overall_risk} />}
       </div>
       {waking && <WakeMessage />}
+      {notice && (
+        <p role="status" className="notice">
+          {notice}
+        </p>
+      )}
       {running ? (
         <section className="processing-panel" aria-live="polite">
           <span className="upload-icon">

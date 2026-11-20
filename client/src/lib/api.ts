@@ -8,6 +8,26 @@ export class ApiError extends Error {
     super(message);
   }
 }
+export function isTransientError(error: unknown) {
+  return error instanceof ApiError
+    ? [408, 425, 429, 500, 502, 503, 504].includes(error.status)
+    : error instanceof Error && error.name !== 'AbortError';
+}
+function retryDelay(milliseconds: number, signal?: AbortSignal) {
+  return new Promise<void>((resolve, reject) => {
+    const abort = () => {
+      clearTimeout(timer);
+      signal?.removeEventListener('abort', abort);
+      reject(new DOMException('Request canceled', 'AbortError'));
+    };
+    const timer = setTimeout(() => {
+      signal?.removeEventListener('abort', abort);
+      resolve();
+    }, milliseconds);
+    signal?.addEventListener('abort', abort, { once: true });
+    if (signal?.aborted) abort();
+  });
+}
 const base = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000').replace(/\/$/, '');
 async function errorMessage(response: Response) {
   try {
@@ -18,16 +38,30 @@ async function errorMessage(response: Response) {
 }
 export function createApi(getToken: GetToken, onWake: (value: boolean) => void) {
   async function request<T>(path: string, method = 'GET', signal?: AbortSignal): Promise<T> {
-    const token = await getToken();
+    if (signal?.aborted) throw new DOMException('Request canceled', 'AbortError');
+    let token = await getToken();
+    if (signal?.aborted) throw new DOMException('Request canceled', 'AbortError');
     if (!token) throw new ApiError('Your session has expired. Please sign in again.', 401);
     const waking = setTimeout(() => onWake(true), 3500);
+    const deadline = Date.now() + 75000;
+    const attempts = method === 'GET' ? 6 : 1;
     try {
-      for (let attempt = 0; attempt < 3; attempt++) {
+      for (let attempt = 0; attempt < attempts; attempt++) {
+        if (signal?.aborted) throw new DOMException('Request canceled', 'AbortError');
+        if (attempt > 0) {
+          token = await getToken();
+          if (signal?.aborted) throw new DOMException('Request canceled', 'AbortError');
+          if (!token) throw new ApiError('Your session has expired. Please sign in again.', 401);
+        }
+        const remaining = deadline - Date.now();
+        if (remaining <= 0)
+          throw new ApiError('The server is taking longer than expected. Please try again.', 503);
         const controller = new AbortController();
         const abort = () => controller.abort();
         signal?.addEventListener('abort', abort, { once: true });
         if (signal?.aborted) controller.abort();
-        const timeout = setTimeout(() => controller.abort(), 25000);
+        const timeout = setTimeout(() => controller.abort(), Math.min(25000, remaining));
+        let nextAttemptDelay = 0;
         try {
           const response = await fetch(`${base}${path}`, {
             method,
@@ -39,13 +73,21 @@ export function createApi(getToken: GetToken, onWake: (value: boolean) => void) 
           return response.status === 204 ? (undefined as T) : await response.json();
         } catch (error) {
           if (signal?.aborted) throw new DOMException('Request canceled', 'AbortError');
-          const transient = !(error instanceof ApiError) || [502, 503, 504].includes(error.status);
-          if (method !== 'GET' || !transient || attempt === 2) throw error;
+          const failure =
+            error instanceof DOMException && error.name === 'AbortError'
+              ? new ApiError('The server is taking longer than expected. Please try again.', 503)
+              : error;
+          if (method !== 'GET' || !isTransientError(failure) || attempt === attempts - 1)
+            throw failure;
+          const remaining = deadline - Date.now();
+          if (remaining <= 0) throw failure;
           onWake(true);
+          nextAttemptDelay = Math.min(2000 * 2 ** attempt, 30000, remaining);
         } finally {
           clearTimeout(timeout);
           signal?.removeEventListener('abort', abort);
         }
+        await retryDelay(nextAttemptDelay, signal);
       }
       throw new Error('The server is unavailable. Please try again.');
     } finally {
