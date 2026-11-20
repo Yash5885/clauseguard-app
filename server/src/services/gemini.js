@@ -16,7 +16,7 @@ function createGemini(config) {
     generate: (prompt, responseJsonSchema) =>
       call(() =>
         ai.models.generateContent({
-          model: 'gemini-2.5-flash',
+          model: config.GEMINI_GENERATION_MODEL || 'gemini-2.5-flash',
           contents: prompt,
           config: {
             responseMimeType: 'application/json',

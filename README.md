@@ -81,6 +81,8 @@ After configuring credentials and seeding the database, run `npm --prefix server
 
 ## Environment variables
 
+`GEMINI_GENERATION_MODEL` selects the text-generation model, defaulting to the originally specified `gemini-2.5-flash`. Google may reject that model for new accounts. Set `GEMINI_GENERATION_MODEL=gemini-3.8-flash` when that occurs; the Render blueprint uses this replacement. Embeddings remain `gemini-embedding-001`, so the existing reference library does not need to be regenerated. Rate-limit retries respect Gemini's structured retry delay; throttled seeds resume missing rows when rerun.
+
 ### Server: `server/.env`
 
 | Variable                | Required   | Default / purpose                                                                        |

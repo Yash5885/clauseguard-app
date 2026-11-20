@@ -13,6 +13,23 @@ function createLimiter(concurrency) {
     }
   };
 }
+function retryDelay(error) {
+  const header = error.response?.headers?.get?.('retry-after');
+  if (header && Number.isFinite(Number(header))) return Math.max(0, Number(header) * 1000);
+  let payload = error;
+  try {
+    payload = JSON.parse(error.message);
+  } catch {
+    /* SDK errors may already expose structured details. */
+  }
+  const details = payload.error?.details || payload.details || error.details || [];
+  for (const detail of details) {
+    if (!detail['@type']?.endsWith('/google.rpc.RetryInfo')) continue;
+    const match = /^(\d+(?:\.\d+)?)s$/.exec(detail.retryDelay);
+    if (match) return Math.ceil(Number(match[1]) * 1000);
+  }
+  return null;
+}
 async function retry(
   fn,
   {
@@ -27,8 +44,14 @@ async function retry(
     } catch (error) {
       const status = Number(error.status || error.code);
       if (![429, 500, 502, 503, 504].includes(status) || i === attempts - 1) throw error;
-      await sleep(Math.min(30000, 1000 * 2 ** i) + Math.floor(random() * 500));
+      const suggested = retryDelay(error);
+      if (suggested > 120000) throw error;
+      const delay = Math.max(
+        Math.min(30000, 1000 * 2 ** i),
+        suggested === null ? (status === 429 ? 60000 : 0) : suggested + 1000,
+      );
+      await sleep(delay + Math.floor(random() * 500));
     }
   }
 }
-module.exports = { createLimiter, retry };
+module.exports = { createLimiter, retry, retryDelay };

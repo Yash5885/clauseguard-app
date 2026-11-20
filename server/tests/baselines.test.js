@@ -35,7 +35,7 @@ test('rate limits retry with exponential backoff', async () => {
     .mockResolvedValue('ok');
   const sleep = jest.fn();
   expect(await retry(call, { sleep, random: () => 0 })).toBe('ok');
-  expect(sleep.mock.calls).toEqual([[1000], [2000]]);
+  expect(sleep.mock.calls).toEqual([[60000], [2000]]);
   await expect(retry(() => Promise.reject({ status: 400 }), { sleep })).rejects.toEqual({
     status: 400,
   });

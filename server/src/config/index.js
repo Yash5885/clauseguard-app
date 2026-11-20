@@ -5,6 +5,7 @@ const schema = z.object({
   PORT: z.coerce.number().int().min(1).max(65535).default(4000),
   DATABASE_URL: z.string().url(),
   GEMINI_API_KEY: z.string().min(1),
+  GEMINI_GENERATION_MODEL: z.string().trim().min(1).default('gemini-2.5-flash'),
   CLERK_SECRET_KEY: z.string().startsWith('sk_'),
   CLERK_PUBLISHABLE_KEY: z.string().startsWith('pk_'),
   CLIENT_URL: z
