@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: clauseguard-api
+    runtime: docker
+    plan: free
+    numInstances: 1
+    dockerContext: ./server
+    dockerfilePath: ./server/Dockerfile
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: '4000'
+      - key: DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: CLERK_SECRET_KEY
+        sync: false
+      - key: CLERK_PUBLISHABLE_KEY
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: DAILY_ANALYSIS_LIMIT
+        value: '10'
+      - key: USER_CONCURRENCY
+        value: '2'
+      - key: QUEUE_CONCURRENCY
+        value: '2'
+      - key: QUEUE_CAPACITY
+        value: '10'
+      - key: GEMINI_CONCURRENCY
+        value: '2'
+      - key: UNKNOWN_THRESHOLD
+        value: '0.60'
+      - key: MAX_CLAUSES
+        value: '300'
+      - key: MAX_TEXT_CHARACTERS
+        value: '250000'
+      - key: LOG_LEVEL
+        value: info

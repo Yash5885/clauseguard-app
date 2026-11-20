@@ -59,7 +59,11 @@ function fallback(text) {
     .map((s) => s.trim())
     .filter(Boolean);
   return sections.flatMap((section) => {
-    const category = hints.find(([pattern]) => pattern.test(section.slice(0, 160)))?.[1] || 'Other';
+    const category =
+      hints
+        .map(([pattern, category]) => ({ category, index: section.slice(0, 160).search(pattern) }))
+        .filter((hit) => hit.index >= 0)
+        .sort((a, b) => a.index - b.index)[0]?.category || 'Other';
     const parts = [];
     for (const text of splitLongText(section)) parts.push({ text, category });
     return parts;

@@ -37,6 +37,9 @@ test('fallback preserves numbered sections and assigns categories', () => {
   const result = fallback('1. Payment Terms\nPay in 30 days.\n2. Liability\nUnlimited liability.');
   expect(result).toHaveLength(2);
   expect(result[1].category).toBe('Liability');
+  expect(fallback('2. Liability\nLiability is limited to fees paid.')[0].category).toBe(
+    'Liability',
+  );
 });
 test('long chunks overlap without losing the end of the input', () => {
   const text = 'abc '.repeat(10000);
@@ -64,13 +67,11 @@ test('accepts valid verbatim segmentation and rejects invented content', async (
 });
 test('does not omit short provisions or collapse intentional repeated clauses', async () => {
   const text = 'Pay within 30 days. No liability cap.';
-  const generate = jest
-    .fn()
-    .mockResolvedValue({
-      text: JSON.stringify({
-        clauses: [{ text: 'Pay within 30 days.', category: 'Payment Terms' }],
-      }),
-    });
+  const generate = jest.fn().mockResolvedValue({
+    text: JSON.stringify({
+      clauses: [{ text: 'Pay within 30 days.', category: 'Payment Terms' }],
+    }),
+  });
   expect((await createSegmenter({ generate })(text)).usedFallback).toBe(true);
   const repeated = 'Pay in 30 days.\nPay in 30 days.';
   generate.mockResolvedValue({
