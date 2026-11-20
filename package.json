@@ -1,0 +1,1 @@
+{"name":"clauseguard","private":true,"scripts":{"test":"npm --prefix server test && npm --prefix client test","build":"npm --prefix server run build && npm --prefix client run build","lint":"npm --prefix server run lint && npm --prefix client run lint","format":"prettier --write client/src server/src server/tests README.md"},"devDependencies":{"prettier":"^3.6.2"}}
