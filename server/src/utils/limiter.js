@@ -1,3 +1,4 @@
+const { isDailyQuotaError } = require('./geminiErrors');
 function createLimiter(concurrency) {
   let active = 0;
   const waiting = [];
@@ -42,6 +43,7 @@ async function retry(
     try {
       return await fn();
     } catch (error) {
+      if (isDailyQuotaError(error)) throw error;
       const status = Number(error.status || error.code);
       if (![429, 500, 502, 503, 504].includes(status) || i === attempts - 1) throw error;
       const suggested = retryDelay(error);

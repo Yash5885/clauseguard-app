@@ -1,9 +1,13 @@
 const { GoogleGenAI } = require('@google/genai');
 const { createLimiter, retry } = require('../utils/limiter');
+const { explainGeminiError } = require('../utils/geminiErrors');
 function createGemini(config) {
   const ai = new GoogleGenAI({ apiKey: config.GEMINI_API_KEY, httpOptions: { timeout: 60000 } });
   const limit = createLimiter(config.GEMINI_CONCURRENCY);
-  const call = (fn) => limit(() => retry(fn));
+  const call = (fn) =>
+    limit(() => retry(fn)).catch((error) => {
+      throw explainGeminiError(error);
+    });
   return {
     embed: (texts, taskType) =>
       call(() =>

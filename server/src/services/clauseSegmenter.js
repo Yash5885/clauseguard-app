@@ -115,6 +115,7 @@ function createSegmenter(gemini, logger = { warn: () => {} }, maxClauses = 300) 
           clauses = validateCoverage(schema.parse(JSON.parse(response.text)).clauses, chunk);
           break;
         } catch (error) {
+          if (error instanceof AppError && error.code === 'GEMINI_DAILY_LIMIT') throw error;
           logger.warn(
             { attempt: attempt + 1, errorName: error.name },
             'Clause segmentation attempt failed',

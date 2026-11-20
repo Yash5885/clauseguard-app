@@ -1,4 +1,5 @@
 const { z } = require('zod');
+const { AppError } = require('../utils/errors');
 const schema = z
   .object({
     explanation: z.string().min(20).max(2000),
@@ -37,6 +38,7 @@ function createExplanationService(gemini) {
           result.explanation += ' Informational only; not legal advice.';
         return result;
       } catch (error) {
+        if (error instanceof AppError) throw error;
         if (attempt === 1) throw error;
       }
     }
