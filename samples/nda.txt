@@ -1,0 +1,31 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+Demonstration contract. Fictional parties; not a legal template.
+
+This agreement is entered into by Alder Studio Ltd. and Northline Systems Ltd. to evaluate a proposed software development project. Either party may disclose confidential technical, financial, and commercial information in connection with the evaluation.
+
+1. Confidentiality
+Each party shall protect the other confidential information with reasonable care and use it only for evaluating the project. Disclosure to employees and professional advisers is permitted only on a need-to-know basis under equivalent confidentiality duties.
+
+2. Exclusions
+Confidential information excludes information already known to the recipient, publicly available without breach, independently developed without using disclosed information, or lawfully received from a third party. The recipient shall maintain reasonable records establishing any exclusion.
+
+3. Required disclosure
+If disclosure is required by law or court order, the recipient may disclose only what is required and, where legally permitted, shall give prompt notice and reasonable assistance to seek protective treatment.
+
+4. Intellectual property
+Each party retains ownership of its pre-existing intellectual property. No assignment or license is granted except the limited right to evaluate the disclosed information for the stated purpose. Neither party is obliged to enter a further agreement.
+
+5. Duration and return
+The evaluation period is two years. Confidentiality duties continue for three years after each disclosure, except that genuine trade secrets remain protected while they retain that status. On written request, information shall be returned or destroyed, except a legally required archival copy subject to continuing protection.
+
+6. Liability
+Each party aggregate liability is limited to fifty thousand pounds, except for fraud or willful misconduct. Each party shall mitigate avoidable loss and shall not recover the same loss more than once.
+
+7. Termination
+Either party may end discussions on fourteen days written notice. Termination does not affect confidentiality duties already accrued. Neither party may use the other trademarks in publicity without prior written consent.
+
+8. Dispute resolution
+The parties shall attempt good-faith negotiation for thirty days before bringing proceedings in a court of competent jurisdiction. Either party may seek urgent protective relief. Each party bears its own legal fees unless the court orders otherwise. Amendments require mutual written consent.
+
+Signed for Alder Studio Ltd.: ____________________
+Signed for Northline Systems Ltd.: ____________________

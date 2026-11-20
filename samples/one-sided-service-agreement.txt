@@ -1,0 +1,34 @@
+MANAGED SERVICES AGREEMENT
+Demonstration contract. Fictional parties; intentionally one-sided terms for risk review, not a legal template.
+
+Meridian Commerce Ltd. appoints Cedar Operations Ltd. to provide customer support, reporting, and platform administration. Supplier shall maintain staffing sufficient to satisfy every requested service level throughout the engagement.
+
+1. Scope and unilateral modification
+Customer may modify the services, performance standards, and all contractual terms without notice or Supplier consent. Supplier shall bear all implementation costs and may not increase its fees or withdraw as a result of any modification.
+
+2. Payment terms
+Customer shall pay invoices within 120 days after finance committee approval. Payment is pay-when-paid and contingent upon Customer receiving funds from its own clients. Customer may deduct any amount it considers appropriate without evidence or allowing Supplier to contest the deduction.
+
+3. Intellectual property
+Supplier assigns to Customer all present and future intellectual property, including reusable tools and inventions unrelated to the services, whether developed during or after this agreement. Ownership transfers on creation and is not conditional on payment.
+
+4. Liability
+Supplier liability is unlimited and uncapped for every breach, delay, and administrative error. Supplier shall reimburse all direct and indirect losses whether or not caused by Supplier. Customer shall have no liability under any circumstances, including its own willful misconduct.
+
+5. Termination and renewal
+Customer may terminate immediately at its sole discretion without notice or payment for completed work. Supplier may not terminate for nonpayment. This agreement automatically renews for successive five-year terms without notice and cannot be canceled during a renewed term.
+
+6. Confidentiality
+All information of any kind shall remain confidential in perpetuity without exception. Supplier guarantees that no person will ever access the information improperly, including through events beyond Supplier control. Customer may publish Supplier pricing and technical documentation without restriction.
+
+7. Indemnification
+Supplier alone shall indemnify Customer for any and all claims, including claims caused solely by Customer negligence or misconduct. Customer may settle any claim for any amount without consulting Supplier, and Supplier must pay immediately without evidence of loss.
+
+8. Non-compete and non-solicitation
+Supplier shall not engage in any competing activity for twenty-four months after termination, with no geographic limitation. Supplier shall never provide services to any present or future Customer client, including clients unknown to Supplier during the term.
+
+9. Dispute resolution
+Customer may choose any foreign jurisdiction as the exclusive venue after a dispute arises. Supplier irrevocably waives trial by jury and shall prepay all Customer legal fees regardless of outcome. Customer retains every right to pursue claims in any other forum.
+
+Signed for Meridian Commerce Ltd.: ____________________
+Signed for Cedar Operations Ltd.: ____________________

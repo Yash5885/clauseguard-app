@@ -1,16 +1,106 @@
 [
- {"name":"Uncapped liability","category":"Liability","severity":"high","pattern":"\\b(unlimited|uncapped|without (?:an? )?(?:aggregate )?limit)\\b","exclude":"\\b(?:no|not|neither party has) (?:unlimited|uncapped) liability"},
- {"name":"Discretionary termination","category":"Termination","severity":"high","pattern":"\\bsole discretion\\b","requires":"terminat"},
- {"name":"Renewal without notice","category":"Termination","severity":"high","pattern":"auto(?:matically)?[ -]?renew","requires":"without (?:any )?notice|no (?:renewal )?notice|without (?:a )?reminder"},
- {"name":"Extended payment period","category":"Payment Terms","severity":"medium","duration":{"pattern":"(?:within|net|after|in)\\s+(\\d+|ninety|one hundred and twenty)\\s*(?:calendar |business )?days","unit":"days","above":60}},
- {"name":"Pay when paid","category":"Payment Terms","severity":"high","pattern":"pay[ -](?:when|if)[ -]paid|(?:conditional|contingent) (?:on|upon) (?:Customer |customer )?(?:receiving|receipt of) payment"},
- {"name":"Perpetual confidentiality without exceptions","category":"Confidentiality","severity":"high","pattern":"perpetu(?:al|ity)|forever","absent":"exclud|except|carve.out|publicly available|independently developed|trade secrets?"},
- {"name":"Assignment of future intellectual property","category":"IP Rights","severity":"high","pattern":"all (?:present and future|current and future|future) (?:intellectual property|IP|inventions)|(?:all ideas|all inventions).{0,80}(?:thereafter|after termination)","requires":"assign|own"},
- {"name":"Non-compete exceeds twelve months","category":"Non-Compete & Non-Solicitation","severity":"high","requires":"non.compete|compet(?:ing|itor)|not (?:work|provide)","duration":{"pattern":"(\\d+|eighteen|twenty.four|two|three|five)\\s*(months?|years?)","unit":"months","above":12}},
- {"name":"Unbounded non-compete territory","category":"Non-Compete & Non-Solicitation","severity":"high","pattern":"non.compete|competing activity|not work for.{0,30}compet","absent":"within (?:the |a )?(?:city|county|state|country|territory)|within \\d+ (?:miles|kilometers)|in (?:the )?(?:city|county|state) of|geographic (?:area|limit) of"},
- {"name":"Indemnity for the other party fault","category":"Indemnification","severity":"high","pattern":"indemnif","requires":"(?:Customer|other party|indemnified party).{0,30}(?:own |sole )?(?:negligence|misconduct)","exclude":"exclud.{0,60}(?:negligence|misconduct)"},
- {"name":"One-sided indemnification","category":"Indemnification","severity":"medium","pattern":"Supplier (?:alone )?shall indemnify|Supplier indemnifies|Contractor shall indemnify","absent":"each party|mutual|Customer shall indemnify"},
- {"name":"Unilateral modification","category":"*","severity":"high","pattern":"(?:change|modify|amend|increase|expand).{0,80}(?:without (?:any )?(?:notice|consent)|sole discretion)|unilateral(?:ly)?.{0,40}(?:change|modify|amend)","exclude":"may not (?:change|modify|amend)"},
- {"name":"Jury trial waiver","category":"Governing Law & Dispute Resolution","severity":"medium","pattern":"waiv.{0,30}(?:trial by jury|jury trial)","exclude":"(?:no|neither) party waives"},
- {"name":"Unilateral or distant venue","category":"Governing Law & Dispute Resolution","severity":"high","pattern":"distant jurisdiction|any foreign jurisdiction|venue.{0,40}(?:selected|chosen) by Customer|Customer may choose.{0,40}jurisdiction"}
+  {
+    "name": "Uncapped liability",
+    "category": "Liability",
+    "severity": "high",
+    "pattern": "\\b(unlimited|uncapped|without (?:an? )?(?:aggregate )?limit)\\b",
+    "exclude": "\\b(?:no|not|neither party has) (?:unlimited|uncapped) liability"
+  },
+  {
+    "name": "Discretionary termination",
+    "category": "Termination",
+    "severity": "high",
+    "pattern": "\\bsole discretion\\b",
+    "requires": "terminat"
+  },
+  {
+    "name": "Renewal without notice",
+    "category": "Termination",
+    "severity": "high",
+    "pattern": "auto(?:matically)?[ -]?renew",
+    "requires": "without (?:any )?notice|no (?:renewal )?notice|without (?:a )?reminder"
+  },
+  {
+    "name": "Extended payment period",
+    "category": "Payment Terms",
+    "severity": "medium",
+    "duration": {
+      "pattern": "(?:within|net|after|in)\\s+(\\d+|ninety|one hundred and twenty)\\s*(?:calendar |business )?days",
+      "unit": "days",
+      "above": 60
+    }
+  },
+  {
+    "name": "Pay when paid",
+    "category": "Payment Terms",
+    "severity": "high",
+    "pattern": "pay[ -](?:when|if)[ -]paid|(?:conditional|contingent) (?:on|upon) (?:Customer |customer )?(?:receiving|receipt of) payment"
+  },
+  {
+    "name": "Perpetual confidentiality without exceptions",
+    "category": "Confidentiality",
+    "severity": "high",
+    "pattern": "perpetu(?:al|ity)|forever",
+    "absent": "excludes? (?:information|public|independently)|except (?:for )?(?:information|public|trade)|publicly available|independently developed|trade secrets?"
+  },
+  {
+    "name": "Assignment of future intellectual property",
+    "category": "IP Rights",
+    "severity": "high",
+    "pattern": "all (?:present and future|current and future|future) (?:intellectual property|IP|inventions)|(?:all ideas|all inventions).{0,80}(?:thereafter|after termination)",
+    "requires": "assign|own"
+  },
+  {
+    "name": "Non-compete exceeds twelve months",
+    "category": "Non-Compete & Non-Solicitation",
+    "severity": "high",
+    "requires": "non.compete|compet(?:ing|itor)|not (?:work|provide)",
+    "duration": {
+      "pattern": "(\\d+|eighteen|twenty.four|two|three|five)\\s*(months?|years?)",
+      "unit": "months",
+      "above": 12
+    }
+  },
+  {
+    "name": "Unbounded non-compete territory",
+    "category": "Non-Compete & Non-Solicitation",
+    "severity": "high",
+    "pattern": "non.compete|competing activity|not work for.{0,30}compet",
+    "absent": "within (?:the |a )?(?:city|county|state|country|territory)|within \\d+ (?:miles|kilometers)|in (?:the )?(?:city|county|state) of|geographic (?:area|limit) of"
+  },
+  {
+    "name": "Indemnity for the other party fault",
+    "category": "Indemnification",
+    "severity": "high",
+    "pattern": "indemnif",
+    "requires": "(?:Customer|other party|indemnified party).{0,30}(?:own |sole )?(?:negligence|misconduct)",
+    "exclude": "exclud.{0,60}(?:negligence|misconduct)"
+  },
+  {
+    "name": "One-sided indemnification",
+    "category": "Indemnification",
+    "severity": "medium",
+    "pattern": "Supplier (?:alone )?shall indemnify|Supplier indemnifies|Contractor shall indemnify",
+    "absent": "each party|mutual|Customer shall indemnify"
+  },
+  {
+    "name": "Unilateral modification",
+    "category": "*",
+    "severity": "high",
+    "pattern": "(?:change|modify|amend|increase|expand).{0,80}(?:without (?:any )?(?:notice|consent)|sole discretion)|unilateral(?:ly)?.{0,40}(?:change|modify|amend)",
+    "exclude": "may not (?:change|modify|amend)"
+  },
+  {
+    "name": "Jury trial waiver",
+    "category": "Governing Law & Dispute Resolution",
+    "severity": "medium",
+    "pattern": "waiv.{0,30}(?:trial by jury|jury trial)",
+    "exclude": "(?:no|neither) party waives"
+  },
+  {
+    "name": "Unilateral or distant venue",
+    "category": "Governing Law & Dispute Resolution",
+    "severity": "high",
+    "pattern": "distant jurisdiction|any foreign jurisdiction|venue.{0,40}(?:selected|chosen) by Customer|Customer may choose.{0,40}jurisdiction"
+  }
 ]
