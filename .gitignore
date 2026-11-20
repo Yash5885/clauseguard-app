@@ -7,4 +7,5 @@ coverage/
 work/
 outputs/
 *.log
+*.tsbuildinfo
 .DS_Store
