@@ -1,23 +1,23 @@
 'use client';
 import Link from 'next/link';
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { Show, UserButton } from '@clerk/nextjs';
 export function AuthControls() {
   return (
     <>
-      <SignedOut>
+      <Show when="signed-out">
         <Link href="/sign-in" className="text-link">
           Sign in
         </Link>
         <Link href="/sign-up" className="button small">
           Get started
         </Link>
-      </SignedOut>
-      <SignedIn>
+      </Show>
+      <Show when="signed-in">
         <Link href="/dashboard" className="button small">
           Open workspace
         </Link>
         <UserButton />
-      </SignedIn>
+      </Show>
     </>
   );
 }

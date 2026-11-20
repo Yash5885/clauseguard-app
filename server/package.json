@@ -16,7 +16,7 @@
     "verify:live": "node scripts/verify-live.js"
   },
   "dependencies": {
-    "@clerk/express": "^1.7.0",
+    "@clerk/express": "^2.1.95",
     "@google/genai": "^1.30.0",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
