@@ -1,0 +1,770 @@
+[
+  {
+    "category": "Payment Terms",
+    "text": "Customer shall pay undisputed invoices within thirty days of receipt and notify Supplier of any disputed amount within fifteen days.",
+    "risk_level": "safe",
+    "rationale": "A clear payment deadline and dispute process protect both parties."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Fees are payable against completed milestones accepted in writing, and acceptance shall not be unreasonably withheld.",
+    "risk_level": "safe",
+    "rationale": "Payment follows verifiable delivery with a balanced acceptance standard."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Late charges on undisputed overdue amounts shall be limited to one percent per month or the maximum lawful rate, whichever is lower.",
+    "risk_level": "safe",
+    "rationale": "Late charges are bounded and apply only to undisputed balances."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Reasonable travel expenses require advance written approval and itemized receipts before reimbursement.",
+    "risk_level": "safe",
+    "rationale": "Prior approval and supporting records constrain reimbursable costs."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Customer may withhold only the genuinely disputed portion of an invoice while the parties resolve the dispute in good faith.",
+    "risk_level": "safe",
+    "rationale": "The withholding right is proportionate to the actual dispute."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Any increase in recurring fees requires mutual written agreement and applies only to services ordered after that agreement.",
+    "risk_level": "safe",
+    "rationale": "Price changes require consent and do not operate retroactively."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Customer shall pay all invoices within sixty days, subject to its internal approval procedures.",
+    "risk_level": "caution",
+    "rationale": "Internal approval procedures could delay an otherwise defined deadline."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Supplier may adjust fees annually by reference to prevailing market conditions upon thirty days notice.",
+    "risk_level": "caution",
+    "rationale": "The pricing benchmark is open-ended and lacks a numerical cap."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Invoices are deemed accepted unless disputed within five business days after transmission.",
+    "risk_level": "caution",
+    "rationale": "A short objection window may impair review of billing errors."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "A deposit equal to fifty percent of estimated fees is nonrefundable once project scheduling begins.",
+    "risk_level": "caution",
+    "rationale": "The deposit may exceed costs incurred if work has barely begun."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Customer shall reimburse all reasonable expenses incurred in performance without separate prior approval.",
+    "risk_level": "caution",
+    "rationale": "Reasonableness offers some restraint but advance budget control is absent."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Payment shall be made ninety days after receipt of each invoice, and Supplier shall continue performance during any delay.",
+    "risk_level": "risky",
+    "rationale": "Extended payment terms transfer substantial financing risk to Supplier."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Supplier shall be paid only when Customer receives payment from its own client, regardless of the reason for nonpayment.",
+    "risk_level": "risky",
+    "rationale": "A pay-when-paid condition shifts third-party credit risk to Supplier."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Customer may deduct any alleged loss from invoices without substantiation, notice, or an opportunity to contest the deduction.",
+    "risk_level": "risky",
+    "rationale": "Unilateral deductions can remove compensation without a dispute process."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Supplier may increase fees at any time in its sole discretion and Customer shall remain bound for the entire term.",
+    "risk_level": "risky",
+    "rationale": "Unrestricted price changes bind Customer without an exit right."
+  },
+  {
+    "category": "Payment Terms",
+    "text": "Any invoice unpaid after seven days shall accrue a charge of five percent per week, compounded weekly, with no cap.",
+    "risk_level": "risky",
+    "rationale": "Rapid compounding and uncapped charges create disproportionate payment exposure."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Upon full payment, Supplier assigns ownership of the final deliverables specifically created under the statement of work, excluding pre-existing materials.",
+    "risk_level": "safe",
+    "rationale": "The assignment is tied to payment and preserves background rights."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Each party retains its pre-existing intellectual property and grants only the licenses expressly stated in this agreement.",
+    "risk_level": "safe",
+    "rationale": "Ownership remains with the originating party unless expressly agreed."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Supplier grants Customer a perpetual nonexclusive license to embedded background tools solely as necessary to use the paid deliverables.",
+    "risk_level": "safe",
+    "rationale": "The license supports use of the deliverables without transferring unrelated assets."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Open-source components remain subject to their applicable licenses, which Supplier shall disclose before incorporation.",
+    "risk_level": "safe",
+    "rationale": "Advance disclosure allows informed review of third-party license obligations."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Customer grants Supplier a limited license to Customer materials only for performing the services during the term.",
+    "risk_level": "safe",
+    "rationale": "The license is purpose-limited and expires with performance."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Neither party may use the other party trademarks in publicity without prior written consent.",
+    "risk_level": "safe",
+    "rationale": "Mutual consent protects both parties branding interests."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Customer receives a license to work product for internal business purposes, with external distribution subject to a separate agreement.",
+    "risk_level": "caution",
+    "rationale": "The usage restriction may prevent foreseeable distribution needs."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Supplier retains ownership of reusable methods developed during performance unless the parties identify them as deliverables.",
+    "risk_level": "caution",
+    "rationale": "Unclear identification of deliverables can create ownership disputes."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Customer may request source files after completion subject to a reasonable additional transfer fee.",
+    "risk_level": "caution",
+    "rationale": "Unspecified source-file charges may create unexpected completion costs."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Supplier may display completed work in its portfolio unless Customer objects within ten days of delivery.",
+    "risk_level": "caution",
+    "rationale": "An opt-out publicity mechanism may expose sensitive work before review."
+  },
+  {
+    "category": "IP Rights",
+    "text": "The license extends to Customer affiliates existing on the effective date but excludes future affiliates.",
+    "risk_level": "caution",
+    "rationale": "Changes to the corporate group may require additional licensing."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Contractor hereby assigns to Company all present and future intellectual property, including inventions unrelated to the services.",
+    "risk_level": "risky",
+    "rationale": "The assignment reaches unrelated work and future inventions without limits."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Supplier transfers all background technology and reusable tools to Customer upon signing, whether or not Customer pays any fees.",
+    "risk_level": "risky",
+    "rationale": "The transfer captures existing assets without a payment condition."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Customer grants Supplier an irrevocable unrestricted license to sell Customer confidential designs to any third party.",
+    "risk_level": "risky",
+    "rationale": "Unrestricted commercialization defeats the expected control over confidential designs."
+  },
+  {
+    "category": "IP Rights",
+    "text": "All ideas conceived by Contractor during the term and for five years thereafter shall be owned exclusively by Company.",
+    "risk_level": "risky",
+    "rationale": "The extended assignment captures work beyond the engagement."
+  },
+  {
+    "category": "IP Rights",
+    "text": "Customer may modify, sublicense, or resell third-party components regardless of any restrictions imposed by their owners.",
+    "risk_level": "risky",
+    "rationale": "The clause purports to grant rights that the contracting party may not possess."
+  },
+  {
+    "category": "Liability",
+    "text": "Each party aggregate liability shall not exceed fees paid or payable under this agreement in the preceding twelve months.",
+    "risk_level": "safe",
+    "rationale": "A mutual cap links exposure to the value of the engagement."
+  },
+  {
+    "category": "Liability",
+    "text": "Neither party shall be liable for indirect or consequential losses, except for amounts payable under expressly agreed indemnities.",
+    "risk_level": "safe",
+    "rationale": "The mutual exclusion identifies a defined exception."
+  },
+  {
+    "category": "Liability",
+    "text": "The liability cap shall not apply to fraud, willful misconduct, or liability that cannot be limited by applicable law.",
+    "risk_level": "safe",
+    "rationale": "Narrow exceptions preserve accountability for serious misconduct."
+  },
+  {
+    "category": "Liability",
+    "text": "Each party shall take commercially reasonable steps to mitigate losses arising from a breach.",
+    "risk_level": "safe",
+    "rationale": "Mutual mitigation reduces avoidable loss."
+  },
+  {
+    "category": "Liability",
+    "text": "Liability for data confidentiality breaches is subject to a separate cap equal to twice the annual fees.",
+    "risk_level": "safe",
+    "rationale": "A defined enhanced cap recognizes sensitive obligations while bounding exposure."
+  },
+  {
+    "category": "Liability",
+    "text": "A party claiming damages shall establish direct loss caused by the other party breach and provide reasonable supporting records.",
+    "risk_level": "safe",
+    "rationale": "Causation and evidence requirements constrain unsupported claims."
+  },
+  {
+    "category": "Liability",
+    "text": "Supplier liability is capped at the fees paid during the previous three months, excluding all unpaid fees.",
+    "risk_level": "caution",
+    "rationale": "A short fee period may provide limited recovery for Customer."
+  },
+  {
+    "category": "Liability",
+    "text": "The parties exclude consequential losses but do not define whether lost profits fall within that exclusion.",
+    "risk_level": "caution",
+    "rationale": "Ambiguous treatment of lost profits may create disagreement over recoverable damages."
+  },
+  {
+    "category": "Liability",
+    "text": "Customer liability is capped at annual fees, while Supplier liability is capped at three times annual fees.",
+    "risk_level": "caution",
+    "rationale": "Different caps allocate substantially more exposure to Supplier."
+  },
+  {
+    "category": "Liability",
+    "text": "Claims must be notified within thirty days after the claimant becomes aware of the relevant event.",
+    "risk_level": "caution",
+    "rationale": "The short notification period may restrict otherwise valid claims."
+  },
+  {
+    "category": "Liability",
+    "text": "The cap does not apply to breach of any warranty in this agreement.",
+    "risk_level": "caution",
+    "rationale": "A broad warranty carve-out may undermine the stated liability limit."
+  },
+  {
+    "category": "Liability",
+    "text": "Supplier liability shall be unlimited and uncapped for every breach, including minor delays and administrative errors.",
+    "risk_level": "risky",
+    "rationale": "Unlimited exposure is disproportionate to routine performance failures."
+  },
+  {
+    "category": "Liability",
+    "text": "Customer shall have no liability under any circumstances, including its own intentional misconduct, while Supplier remains fully liable.",
+    "risk_level": "risky",
+    "rationale": "The complete one-sided exclusion removes meaningful accountability for Customer."
+  },
+  {
+    "category": "Liability",
+    "text": "Supplier shall reimburse all losses of any nature whether or not caused by Supplier or reasonably foreseeable.",
+    "risk_level": "risky",
+    "rationale": "Recovery is disconnected from causation and foreseeability."
+  },
+  {
+    "category": "Liability",
+    "text": "Supplier shall pay liquidated damages of one hundred percent of the contract price for each day of delay, without aggregate limit.",
+    "risk_level": "risky",
+    "rationale": "Daily damages can rapidly exceed the entire contract value."
+  },
+  {
+    "category": "Liability",
+    "text": "Customer may recover direct, indirect, punitive, and consequential damages in addition to the full contract price for the same loss.",
+    "risk_level": "risky",
+    "rationale": "Overlapping recoveries can multiply exposure for a single event."
+  },
+  {
+    "category": "Termination",
+    "text": "Either party may terminate for material breach if the breach remains uncured thirty days after written notice.",
+    "risk_level": "safe",
+    "rationale": "Mutual rights and a cure period support proportionate termination."
+  },
+  {
+    "category": "Termination",
+    "text": "Either party may terminate for convenience on thirty days written notice, with payment for services properly performed through termination.",
+    "risk_level": "safe",
+    "rationale": "A mutual notice period preserves payment for completed work."
+  },
+  {
+    "category": "Termination",
+    "text": "At expiry the agreement ends unless the parties sign a written renewal.",
+    "risk_level": "safe",
+    "rationale": "Renewal requires an affirmative agreement."
+  },
+  {
+    "category": "Termination",
+    "text": "Upon termination Supplier shall return Customer materials and reasonably assist transition at the agreed rates for up to thirty days.",
+    "risk_level": "safe",
+    "rationale": "A bounded transition obligation supports continuity with compensation."
+  },
+  {
+    "category": "Termination",
+    "text": "Either party may terminate immediately if the other enters insolvency proceedings, to the extent permitted by applicable law.",
+    "risk_level": "safe",
+    "rationale": "The insolvency trigger is mutual and expressly subject to applicable limits."
+  },
+  {
+    "category": "Termination",
+    "text": "Termination does not affect accrued payment obligations or provisions expressly stated to survive.",
+    "risk_level": "safe",
+    "rationale": "Survival is tied to accrued rights and identified obligations."
+  },
+  {
+    "category": "Termination",
+    "text": "Customer may terminate for convenience on ten days notice, but Supplier may terminate only for material breach.",
+    "risk_level": "caution",
+    "rationale": "Asymmetric convenience rights reduce Supplier planning certainty."
+  },
+  {
+    "category": "Termination",
+    "text": "The agreement renews automatically each year unless either party gives notice at least sixty days before expiry.",
+    "risk_level": "caution",
+    "rationale": "An advance renewal deadline requires active monitoring."
+  },
+  {
+    "category": "Termination",
+    "text": "Customer may suspend services pending an internal investigation, and the parties shall discuss a revised schedule.",
+    "risk_level": "caution",
+    "rationale": "The suspension right lacks a fixed duration or clear compensation terms."
+  },
+  {
+    "category": "Termination",
+    "text": "Supplier must continue transition support for a reasonable period following termination at its standard rates.",
+    "risk_level": "caution",
+    "rationale": "The undefined transition period may prolong resource commitments."
+  },
+  {
+    "category": "Termination",
+    "text": "Customer may terminate if service quality is unsatisfactory after providing a written explanation.",
+    "risk_level": "caution",
+    "rationale": "The subjective quality standard lacks measurable criteria or a cure process."
+  },
+  {
+    "category": "Termination",
+    "text": "Customer may terminate immediately at its sole discretion without notice, and no payment shall be due for work already completed.",
+    "risk_level": "risky",
+    "rationale": "Unilateral termination also forfeits earned compensation."
+  },
+  {
+    "category": "Termination",
+    "text": "This agreement automatically renews for successive five-year terms without notice and cannot be canceled during any renewed term.",
+    "risk_level": "risky",
+    "rationale": "Long automatic renewals without notice create a substantial lock-in."
+  },
+  {
+    "category": "Termination",
+    "text": "Supplier may never terminate this agreement, including for persistent nonpayment or material breach by Customer.",
+    "risk_level": "risky",
+    "rationale": "The absolute restriction requires performance despite serious counterparty breach."
+  },
+  {
+    "category": "Termination",
+    "text": "Upon termination for any reason Customer shall pay all remaining fees for the next ten years without discount or mitigation.",
+    "risk_level": "risky",
+    "rationale": "The exit charge imposes a lengthy obligation regardless of actual loss."
+  },
+  {
+    "category": "Termination",
+    "text": "Customer may change or terminate any term without notice, while Supplier waives every right to object or withdraw.",
+    "risk_level": "risky",
+    "rationale": "Unilateral modification and termination remove Supplier ability to respond."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Each party shall protect the other confidential information with reasonable care and use it only to perform this agreement.",
+    "risk_level": "safe",
+    "rationale": "Mutual purpose and care requirements create balanced protection."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Confidential information excludes information already known, publicly available without breach, independently developed, or lawfully received from a third party.",
+    "risk_level": "safe",
+    "rationale": "Standard exclusions prevent protection from extending to legitimately available information."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Confidentiality obligations continue for three years after termination, except trade secrets remain protected while qualifying as such.",
+    "risk_level": "safe",
+    "rationale": "A defined term and targeted trade-secret protection balance duration and sensitivity."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Disclosure is permitted to personnel who need to know and are bound by confidentiality obligations no less protective than these terms.",
+    "risk_level": "safe",
+    "rationale": "Need-to-know access and equivalent duties constrain onward disclosure."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "A recipient may disclose information required by law after giving prompt notice where lawful and reasonably assisting protective measures.",
+    "risk_level": "safe",
+    "rationale": "The compelled-disclosure process recognizes mandatory obligations with safeguards."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "On request the recipient shall return or destroy confidential information, except legally required archives subject to continuing protection.",
+    "risk_level": "safe",
+    "rationale": "The clause permits necessary retention while preserving protection."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Confidential information includes all information disclosed orally, whether or not later identified in writing.",
+    "risk_level": "caution",
+    "rationale": "Unrecorded oral disclosures may make the protected scope difficult to establish."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "The recipient shall use best efforts to prevent disclosure of confidential information.",
+    "risk_level": "caution",
+    "rationale": "The care standard may impose obligations beyond ordinary reasonable measures."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Confidentiality continues for seven years after disclosure for all nonpublic business information.",
+    "risk_level": "caution",
+    "rationale": "An extended blanket duration may exceed the useful sensitivity of routine information."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Recipient shall notify Discloser of any suspected disclosure within four hours of discovery.",
+    "risk_level": "caution",
+    "rationale": "A very short incident deadline may be difficult to meet reliably."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Discloser may inspect Recipient security procedures on reasonable notice without a defined frequency limit.",
+    "risk_level": "caution",
+    "rationale": "Unbounded inspection frequency may disrupt operations."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "All information of any kind shall remain confidential in perpetuity without exception, including public and independently developed information.",
+    "risk_level": "risky",
+    "rationale": "Perpetual protection without carve-outs reaches information the recipient may legitimately use."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Recipient shall pay one million dollars for every disclosure regardless of harm, fault, or whether the information was already public.",
+    "risk_level": "risky",
+    "rationale": "Automatic payments disregard both actual harm and legitimate disclosure."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Recipient may not comply with any court order requiring disclosure unless Discloser first provides written consent.",
+    "risk_level": "risky",
+    "rationale": "The consent condition can conflict with mandatory disclosure obligations."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Only Supplier owes confidentiality duties, and Customer may publish all Supplier source code and pricing without restriction.",
+    "risk_level": "risky",
+    "rationale": "One-sided protection exposes Supplier sensitive commercial information."
+  },
+  {
+    "category": "Confidentiality",
+    "text": "Recipient guarantees that no person will ever access the information improperly, including through events beyond Recipient control.",
+    "risk_level": "risky",
+    "rationale": "An absolute guarantee transfers uncontrollable security risk to Recipient."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Each party shall indemnify the other against third-party claims arising from its own gross negligence or willful misconduct.",
+    "risk_level": "safe",
+    "rationale": "A mutual indemnity tied to serious misconduct aligns responsibility with fault."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Supplier shall defend third-party intellectual property claims concerning its deliverables, excluding claims caused by Customer unauthorized modifications.",
+    "risk_level": "safe",
+    "rationale": "The defined obligation includes a relevant exclusion for Customer-caused claims."
+  },
+  {
+    "category": "Indemnification",
+    "text": "The indemnified party shall give prompt notice and reasonable cooperation, and the indemnifying party may control the defense with competent counsel.",
+    "risk_level": "safe",
+    "rationale": "A defined defense process supports fair management of covered claims."
+  },
+  {
+    "category": "Indemnification",
+    "text": "No settlement may admit fault of the indemnified party or impose nonmonetary obligations without that party written consent.",
+    "risk_level": "safe",
+    "rationale": "Consent protects the affected party from prejudicial settlements."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Customer shall indemnify Supplier against third-party claims arising from materials Customer supplied in breach of its ownership warranty.",
+    "risk_level": "safe",
+    "rationale": "The obligation follows the party responsible for the supplied materials."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Indemnification applies only to losses finally awarded or agreed in an approved settlement and remains subject to the stated liability cap.",
+    "risk_level": "safe",
+    "rationale": "Defined recoverable losses and a cap bound the obligation."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Supplier shall indemnify Customer against claims connected with the services to the extent attributable to Supplier acts.",
+    "risk_level": "caution",
+    "rationale": "The connection standard is broad although it retains an attribution requirement."
+  },
+  {
+    "category": "Indemnification",
+    "text": "The indemnifying party shall reimburse reasonable defense costs as incurred before liability is determined.",
+    "risk_level": "caution",
+    "rationale": "Advance cost funding may be required even for an unsuccessful claim."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Customer may select separate counsel at Supplier expense when Customer reasonably considers a conflict likely.",
+    "risk_level": "caution",
+    "rationale": "Separate counsel costs depend on a flexible conflict assessment."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Supplier indemnifies Customer affiliates without identifying those entities or requiring them to follow the defense procedure.",
+    "risk_level": "caution",
+    "rationale": "An undefined protected group may broaden exposure and complicate defense."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Supplier shall indemnify Customer for breach of any representation, including direct claims brought by Customer.",
+    "risk_level": "caution",
+    "rationale": "Extending indemnity to direct contract claims may enlarge ordinary remedies."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Supplier alone shall indemnify Customer for any and all claims, including claims caused solely by Customer negligence or misconduct.",
+    "risk_level": "risky",
+    "rationale": "The one-sided indemnity shifts responsibility for Customer own conduct."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Supplier shall provide unlimited indemnification for all losses whether or not related to this agreement.",
+    "risk_level": "risky",
+    "rationale": "Unbounded indemnity reaches unrelated losses."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Customer may settle any claim for any amount without consulting Supplier and Supplier must pay the settlement immediately.",
+    "risk_level": "risky",
+    "rationale": "Uncontrolled settlements impose liability without defense participation."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Supplier shall indemnify Customer for criminal fines imposed for Customer intentional unlawful conduct.",
+    "risk_level": "risky",
+    "rationale": "The indemnity transfers consequences of Customer intentional misconduct."
+  },
+  {
+    "category": "Indemnification",
+    "text": "Supplier waives all defenses to indemnity and must reimburse every asserted claim before receiving evidence of loss.",
+    "risk_level": "risky",
+    "rationale": "Payment without evidence or defenses exposes Supplier to unsupported demands."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "This agreement is governed by the law of the state where both parties maintain their principal offices, excluding conflict-of-law rules.",
+    "risk_level": "safe",
+    "rationale": "The governing law has a clear connection to both parties."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Before litigation the parties shall attempt good-faith negotiation for thirty days through authorized representatives.",
+    "risk_level": "safe",
+    "rationale": "A bounded negotiation period offers an opportunity to resolve disputes."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Any arbitration shall occur remotely before one neutral arbitrator selected jointly under the agreed institutional rules.",
+    "risk_level": "safe",
+    "rationale": "Neutral selection and remote attendance reduce procedural imbalance."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Each party may seek urgent injunctive relief in a court of competent jurisdiction without waiving the agreed dispute process.",
+    "risk_level": "safe",
+    "rationale": "Mutual emergency relief preserves practical protection."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "The courts where the defendant has its principal place of business shall have nonexclusive jurisdiction.",
+    "risk_level": "safe",
+    "rationale": "The venue rule is reciprocal and does not foreclose other appropriate courts."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Mediation costs shall be shared equally and each party shall bear its own legal fees unless otherwise agreed in settlement.",
+    "risk_level": "safe",
+    "rationale": "Transparent cost allocation reduces procedural uncertainty."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Disputes shall be submitted to arbitration under rules to be agreed when a dispute arises.",
+    "risk_level": "caution",
+    "rationale": "Leaving procedural rules unresolved may delay dispute resolution."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Exclusive jurisdiction lies in the courts of Supplier home state although Customer operates elsewhere.",
+    "risk_level": "caution",
+    "rationale": "A one-party home venue may increase the other party litigation burden."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "The prevailing party may recover reasonable legal fees, including costs of enforcing a judgment.",
+    "risk_level": "caution",
+    "rationale": "Fee shifting can increase the cost of an unsuccessful claim."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "The parties must attempt mediation before bringing claims, with no specified deadline for completing mediation.",
+    "risk_level": "caution",
+    "rationale": "An open-ended precondition may delay access to a binding remedy."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "All disputes must be brought within six months after the relevant event, subject to mandatory applicable law.",
+    "risk_level": "caution",
+    "rationale": "The short claim period may restrict time for discovering and preparing claims."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Customer may choose any foreign jurisdiction as the exclusive venue after a dispute arises, and Supplier must appear there at its own expense.",
+    "risk_level": "risky",
+    "rationale": "A unilateral distant-venue choice creates unpredictable enforcement costs."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Supplier irrevocably waives trial by jury and all rights to contest Customer choice of court, while Customer retains those rights.",
+    "risk_level": "risky",
+    "rationale": "The procedural waiver is expressly one-sided."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Customer shall appoint the sole arbitrator from its employees and the award shall be final without any right of challenge.",
+    "risk_level": "risky",
+    "rationale": "A decision maker controlled by one party lacks agreed neutrality."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Supplier may bring no claim or counterclaim in any forum, while Customer may pursue every available remedy.",
+    "risk_level": "risky",
+    "rationale": "An absolute one-sided claims bar removes Supplier route to relief."
+  },
+  {
+    "category": "Governing Law & Dispute Resolution",
+    "text": "Any dispute shall be heard exclusively in a distant jurisdiction selected by Customer, and Supplier must prepay all Customer legal fees regardless of outcome.",
+    "risk_level": "risky",
+    "rationale": "Forced distant venue and unconditional fee funding impose substantial procedural burdens."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "For six months after termination, neither party shall actively solicit personnel who materially participated in the services.",
+    "risk_level": "safe",
+    "rationale": "The mutual restriction is limited in time and personnel scope."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "General advertisements and unsolicited applications shall not constitute prohibited solicitation.",
+    "risk_level": "safe",
+    "rationale": "Express exceptions preserve ordinary recruitment activity."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "No restriction in this agreement prevents Contractor from providing services to other customers, provided confidential information is protected.",
+    "risk_level": "safe",
+    "rationale": "The clause preserves professional mobility with confidentiality safeguards."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "For three months after termination, Supplier shall not solicit the named project customer for substantially identical services in the city of performance.",
+    "risk_level": "safe",
+    "rationale": "The restriction identifies a narrow activity, customer, territory, and duration."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Any exclusivity obligation applies solely during the paid engagement and only to the competing product identified in the statement of work.",
+    "risk_level": "safe",
+    "rationale": "Exclusivity is tied to the compensated work and a defined product."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "A party may hire an employee of the other party with prior written consent, which shall not be unreasonably withheld.",
+    "risk_level": "safe",
+    "rationale": "A reasonable consent process allows justified exceptions."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Supplier shall not solicit Customer employees for twelve months after termination, without limiting the restriction to project personnel.",
+    "risk_level": "caution",
+    "rationale": "The restriction reaches employees unrelated to the engagement."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Contractor shall not work for a directly competing business within the county for twelve months after the engagement.",
+    "risk_level": "caution",
+    "rationale": "A year-long competitor restriction may materially limit available work."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Customer consent is required before Supplier accepts work from any customer introduced during the project.",
+    "risk_level": "caution",
+    "rationale": "An undefined introduced-customer group may constrain unrelated future work."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "The non-solicitation period begins again following any alleged breach pending resolution of the allegation.",
+    "risk_level": "caution",
+    "rationale": "An allegation-based extension may prolong the restriction without a finding."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Supplier shall not engage a subcontractor previously used by Customer during the following twelve months.",
+    "risk_level": "caution",
+    "rationale": "The restriction may cover relationships Supplier did not learn through the project."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Contractor shall not compete with Company anywhere in the world for five years after termination in any line of business.",
+    "risk_level": "risky",
+    "rationale": "Global multi-year restrictions extend far beyond the particular engagement."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Supplier shall never provide services to any present or future Customer client, whether or not Supplier knew that client during the term.",
+    "risk_level": "risky",
+    "rationale": "The perpetual restriction reaches unknown future relationships."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Contractor shall not engage in any competing activity for twenty-four months after termination, with no geographic limitation.",
+    "risk_level": "risky",
+    "rationale": "The extended duration and unrestricted territory materially limit future work."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Customer may expand the list of prohibited employers at any time without notice or additional compensation.",
+    "risk_level": "risky",
+    "rationale": "Unilateral changes make the scope of the restriction unpredictable."
+  },
+  {
+    "category": "Non-Compete & Non-Solicitation",
+    "text": "Supplier shall pay the full value of all future earnings to Customer for any contact with a Customer employee, including unsolicited contact.",
+    "risk_level": "risky",
+    "rationale": "An overbroad contact prohibition carries an unbounded earnings forfeiture."
+  }
+]
