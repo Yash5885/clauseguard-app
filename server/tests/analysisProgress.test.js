@@ -7,7 +7,7 @@ const deferred = () => {
   const promise = new Promise((yes, no) => { resolve = yes; reject = no; });
   return { promise, resolve, reject };
 };
-function setup(explain) {
+function setup(explain, count = 4) {
   const updates = [], inserts = [];
   const db = {
     query: jest.fn(async (sql, args) => {
@@ -23,8 +23,8 @@ function setup(explain) {
   const pipeline = createAnalysisPipeline({
     db, explain, config: { GEMINI_CONCURRENCY: 2 }, logger: { error: jest.fn() },
     extract: async () => 'contract',
-    segment: async () => ({ clauses: [0, 1, 2, 3].map((n) => ({ text: `Clause ${n}`, category: 'Liability' })), usedFallback: false }),
-    embed: async () => [[], [], [], []], search: async () => [],
+    segment: async () => ({ clauses: Array.from({ length: count }, (_, n) => ({ text: `Clause ${n}`, category: 'Liability' })), usedFallback: false }),
+    embed: async () => Array.from({ length: count }, () => []), search: async () => [],
   });
   return { db, updates, inserts, run: () => pipeline({ id: 'report', user_id: 'owner', file_type: 'pdf' }, Buffer.from('file')) };
 }
@@ -67,4 +67,15 @@ test('stops scheduling after failure and drains in-flight work before marking fa
   expect(fixture.inserts).toHaveLength(0);
   expect(fixture.db.transaction).not.toHaveBeenCalled();
   expect(fixture.db.query.mock.calls.at(-1)[0]).toContain("status='failed'");
+});
+
+test('uses bounded explanation batches instead of one request per flagged clause', async () => {
+  const explain = jest.fn();
+  explain.batch = jest.fn(async (items) => items.map(({ clause }) => ({ explanation: `Explanation for ${clause}`, suggested_rewording: 'Balanced terms' })));
+  const fixture = setup(explain, 12);
+  await fixture.run();
+  expect(explain).not.toHaveBeenCalled();
+  expect(explain.batch.mock.calls.map(([items]) => items.length)).toEqual([5, 5, 2]);
+  expect(fixture.inserts.map((args) => args[8])).toEqual(Array.from({ length: 12 }, (_, n) => `Explanation for Clause ${n}`));
+  expect(fixture.updates.filter((p) => p.stage === 'reviewing').map((p) => p.completed)).toEqual(Array.from({ length: 13 }, (_, n) => n));
 });

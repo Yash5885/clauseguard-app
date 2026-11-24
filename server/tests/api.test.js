@@ -62,6 +62,14 @@ suite('authenticated analysis API with PostgreSQL and mocked Gemini', () => {
             }),
           };
         }
+        if (prompt.startsWith('For EACH')) {
+          const contexts = JSON.parse(prompt.split('\n').at(-1));
+          return { text: JSON.stringify({ items: contexts.map(({ clause_id }) => ({
+            clause_id,
+            explanation: 'The supplied references allocate this risk differently. Informational only; not legal advice.',
+            suggested_rewording: 'Each party liability is capped at annual fees.',
+          })) }) };
+        }
         return {
           text: JSON.stringify({
             explanation:

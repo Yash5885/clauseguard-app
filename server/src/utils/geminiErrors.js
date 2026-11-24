@@ -24,7 +24,7 @@ function explainGeminiError(error) {
     return new AppError(
       503,
       'GEMINI_DAILY_LIMIT',
-      'Google Gemini has reached this project’s daily request limit. This analysis could not finish. Wait for the quota to reset, or ask the project owner to enable billing or increase the quota, then upload the contract again.',
+      'Google Gemini has reached this project’s daily request limit. This allowance is shared by all uploads and verification runs, so even your first upload can hit it. Re-uploading now will not help. Wait for the quota to reset, or ask the project owner to enable billing or increase the quota, then try again.',
     );
   if (Number(error.status) === 429)
     return new AppError(

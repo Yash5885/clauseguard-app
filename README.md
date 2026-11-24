@@ -13,7 +13,7 @@ ClauseGuard provides informational analysis, not legal advice. Risk labels descr
 - Normalized 768-dimensional Gemini embeddings, pgvector cosine search, and configurable hybrid scoring.
 - Grounded explanations and suggested wording for Caution and Risky clauses.
 - Background processing with live stages and a completed-clause counter, responsive report filters, and accessible risk badges.
-- Clause reviews run concurrently up to `GEMINI_CONCURRENCY` (default 2), sharing the global upstream request limit. Report clauses retain document order; actual speed depends on Gemini latency and quota.
+- Flagged clauses are explained in batches of up to five (also bounded by context size), with concurrent batches up to `GEMINI_CONCURRENCY` (default 2), sharing the global upstream request limit. Report clauses retain document order; actual speed depends on Gemini latency and quota. A 12-clause sample with 10 flagged clauses normally needs three text-generation requests (one segmentation and two explanation batches), excluding retries. Embeddings have separate API usage. Verification calls use the same project quota as uploads; avoid live tests when preserving a free daily allowance.
 - Per-user concurrency and daily quotas, bounded queues, retry/backoff, and startup recovery.
 
 ## Architecture
