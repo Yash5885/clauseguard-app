@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: process.env.DOTENV_CONFIG_PATH || '.env' });
 const { z } = require('zod');
 const schema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
