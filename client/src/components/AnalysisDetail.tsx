@@ -16,6 +16,7 @@ import { categories, type Risk } from '@/lib/types';
 import { RiskBadge } from './RiskBadge';
 import { WakeMessage } from './Upload';
 import { Skeleton } from './Skeleton';
+import { AnalysisProgress } from './AnalysisProgress';
 export function AnalysisDetail({ id }: { id: string }) {
   const { analysis, error, notice, waking, retry } = useAnalysis(id);
   const [risk, setRisk] = useState('all');
@@ -93,6 +94,7 @@ export function AnalysisDetail({ id }: { id: string }) {
             We’ll update this page as soon as your report is ready. Longer contracts can take a few
             minutes.
           </p>
+          <AnalysisProgress progress={analysis.progress} />
           <ol className="stepper">
             <li className="done">
               <CheckCircle2 size={19} />

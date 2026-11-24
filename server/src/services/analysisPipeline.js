@@ -5,12 +5,23 @@ const { DISCLAIMER } = require('./explanationService');
 function createAnalysisPipeline({ db, extract, segment, embed, search, explain, config, logger }) {
   return async function processAnalysis(analysis, fileBuffer) {
     const { id, user_id: userId } = analysis;
+    let progressWrites = Promise.resolve();
+    const progress = (stage, completed = 0, total = null) => {
+      progressWrites = progressWrites.then(() =>
+        db.query(
+          "UPDATE analyses SET progress=$3 WHERE id=$1 AND user_id=$2 AND status='processing'",
+          [id, userId, JSON.stringify({ stage, completed, total })],
+        ),
+      );
+      return progressWrites;
+    };
     try {
       const started = await db.query(
         "UPDATE analyses SET status='processing' WHERE id=$1 AND user_id=$2 AND status='pending' RETURNING id",
         [id, userId],
       );
       if (!started.rowCount) return;
+      await progress('extracting');
       const counts = await db.query(
         'SELECT category,count(*)::int AS n FROM baseline_clauses GROUP BY category',
       );
@@ -21,12 +32,19 @@ function createAnalysisPipeline({ db, extract, segment, embed, search, explain, 
           'The reference library is not ready. Please try again later.',
         );
       const text = await extract(fileBuffer, analysis.file_type, config.MAX_TEXT_CHARACTERS);
+      await progress('segmenting');
       const segmented = await segment(text);
       if (!segmented.clauses.length)
         throw new AppError(400, 'NO_CLAUSES', 'No contract clauses could be identified.');
+      const total = segmented.clauses.length;
+      await progress('embedding', 0, total);
       const embeddings = await embed(segmented.clauses.map((c) => c.text));
-      const rows = [];
-      for (let position = 0; position < segmented.clauses.length; position++) {
+      await progress('reviewing', 0, total);
+      const rows = new Array(total);
+      let nextPosition = 0;
+      let completed = 0;
+      let failure;
+      const review = async (position) => {
         const clause = segmented.clauses[position];
         const matches = await search(embeddings[position], clause.category);
         const result = scoreRisk(matches, runRules(clause.category, clause.text), {
@@ -36,8 +54,26 @@ function createAnalysisPipeline({ db, extract, segment, embed, search, explain, 
           result.risk_level === 'safe'
             ? { explanation: null, suggested_rewording: null }
             : await explain(clause.text, matches, result);
-        rows.push({ ...clause, ...result, ...explanation, position });
-      }
+        rows[position] = { ...clause, ...result, ...explanation, position };
+        await progress('reviewing', ++completed, total);
+      };
+      // Start only a bounded number of tasks; the Gemini limiter also caps requests globally.
+      const worker = async () => {
+        while (!failure && nextPosition < total) {
+          const position = nextPosition++;
+          try {
+            await review(position);
+          } catch (error) {
+            failure ||= error;
+          }
+        }
+      };
+      await Promise.all(
+        Array.from({ length: Math.min(config.GEMINI_CONCURRENCY || 2, total) }, worker),
+      );
+      // Drain in-flight tasks before failing so no requests or progress writes outlive the job.
+      if (failure) throw failure;
+      await progress('saving', total, total);
       const summary = {
         safe: 0,
         caution: 0,
@@ -76,7 +112,7 @@ function createAnalysisPipeline({ db, extract, segment, embed, search, explain, 
             ],
           );
         await client.query(
-          "UPDATE analyses SET status='completed',overall_risk=$3,summary=$4,completed_at=now(),error_message=NULL WHERE id=$1 AND user_id=$2",
+          "UPDATE analyses SET status='completed',overall_risk=$3,summary=$4,completed_at=now(),error_message=NULL,progress=NULL WHERE id=$1 AND user_id=$2",
           [id, userId, overall, JSON.stringify(summary)],
         );
       });

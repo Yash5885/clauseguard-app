@@ -1,5 +1,10 @@
 export type Risk = 'safe' | 'caution' | 'risky';
 export type AnalysisStatus = 'pending' | 'processing' | 'completed' | 'failed';
+export interface AnalysisProgress {
+  stage: 'extracting' | 'segmenting' | 'embedding' | 'reviewing' | 'saving';
+  completed: number;
+  total: number | null;
+}
 export interface RuleFlag {
   name: string;
   severity: 'medium' | 'high';
@@ -22,6 +27,7 @@ export interface Analysis {
   file_name: string;
   file_type: 'pdf' | 'docx';
   status: AnalysisStatus;
+  progress?: AnalysisProgress | null;
   error_message: string | null;
   overall_risk: Risk | null;
   summary: {

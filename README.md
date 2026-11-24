@@ -12,7 +12,8 @@ ClauseGuard provides informational analysis, not legal advice. Risk labels descr
 - Retrieval against 128 curated baseline clauses: 16 per category, comprising six Safe, five Caution, and five Risky examples.
 - Normalized 768-dimensional Gemini embeddings, pgvector cosine search, and configurable hybrid scoring.
 - Grounded explanations and suggested wording for Caution and Risky clauses.
-- Background processing, progress polling, responsive report filters, and accessible risk badges.
+- Background processing with live stages and a completed-clause counter, responsive report filters, and accessible risk badges.
+- Clause reviews run concurrently up to `GEMINI_CONCURRENCY` (default 2), sharing the global upstream request limit. Report clauses retain document order; actual speed depends on Gemini latency and quota.
 - Per-user concurrency and daily quotas, bounded queues, retry/backoff, and startup recovery.
 
 ## Architecture
