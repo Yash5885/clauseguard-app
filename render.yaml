@@ -19,7 +19,7 @@ services:
       - key: GEMINI_API_KEY
         sync: false
       - key: GEMINI_GENERATION_MODEL
-        value: gemini-3.8-flash
+        value: gemini-3.5-flash
       - key: CLERK_SECRET_KEY
         sync: false
       - key: CLERK_PUBLISHABLE_KEY
